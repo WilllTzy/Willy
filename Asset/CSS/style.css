@@ -783,5 +783,13 @@ section {
     min-height: 100vh;
 }
 
+.scroll-reveal.active, 
+.timeline-item.appear, 
+.achievement-item.show {
+    opacity: 1 !important;
+    transform: translateY(0) translateX(0) !important;
+}
+
+
 
 
