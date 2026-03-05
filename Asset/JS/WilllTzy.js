@@ -122,31 +122,27 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    const observerOptions = {
-    threshold: 0.2
-    };
+const observerOptions = {
+    threshold: 0.1, // Diturunkan biar lebih sensitif
+    rootMargin: "0px 0px -50px 0px"
+};
 
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Kita kasih semua class sekaligus biar aman
+            entry.target.classList.add("active", "appear", "show");
+        }
+        // Opsional: kalau mau animasinya cuma sekali (gak ilang lagi pas discroll up)
+        // unobserve kalau sudah muncul
+        // if (entry.isIntersecting) scrollObserver.unobserve(entry.target);
+    });
+}, observerOptions);
 
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                scrollObserver.unobserve(entry.target); 
-            }
+// Pastikan semua elemen ini terdaftar
+document.querySelectorAll(".scroll-reveal, .timeline-item, .achievement-item, .footer-content").forEach(el => {
+    scrollObserver.observe(el);
+});
 
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(
-        ".scroll-reveal, .timeline-item, .achievement-item, .footer-content"
-    ).forEach(el => scrollObserver.observe(el));
-
-    const connectBtn = document.querySelector(".connect-btn");
-
-    if (connectBtn) {
-        connectBtn.addEventListener("click", function () {
-            console.log("Redirecting to email...");
-        });
-    }
 
 });
