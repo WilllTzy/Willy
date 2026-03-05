@@ -123,26 +123,22 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
 const observerOptions = {
-    threshold: 0.1, // Diturunkan biar lebih sensitif
+    threshold: 0.1,
     rootMargin: "0px 0px -50px 0px"
 };
 
 const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Kita kasih semua class sekaligus biar aman
             entry.target.classList.add("active", "appear", "show");
         }
-        // Opsional: kalau mau animasinya cuma sekali (gak ilang lagi pas discroll up)
-        // unobserve kalau sudah muncul
-        // if (entry.isIntersecting) scrollObserver.unobserve(entry.target);
     });
 }, observerOptions);
 
-// Pastikan semua elemen ini terdaftar
 document.querySelectorAll(".scroll-reveal, .timeline-item, .achievement-item, .footer-content").forEach(el => {
     scrollObserver.observe(el);
 });
 
 
 });
+
