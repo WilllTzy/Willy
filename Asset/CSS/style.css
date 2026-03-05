@@ -583,13 +583,13 @@ body.dark-mode .school-section {
 }
 
 .scroll-reveal {
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(40px);
     transition: all 0.8s ease;
 }
 
 .scroll-reveal.active {
-    opacity: 1;
+    /*opacity: 1; */
     transform: translateY(0);
 }
 
@@ -783,11 +783,5 @@ section {
     min-height: 100vh;
 }
 
-html {
-    scroll-snap-type: y proximity;
-}
 
-section {
-    scroll-snap-align: start;
 
-}
