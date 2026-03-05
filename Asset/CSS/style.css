@@ -583,14 +583,16 @@ body.dark-mode .school-section {
 }
 
 .scroll-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
+    visibility: hidden;
 }
 
 .scroll-reveal.active {
-    /*opacity: 1; */
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
 }
 
 /*-----------------------------------------------------------------------SECTION ACHIEVEMENT--------------------------------------------------------------------------*/
@@ -789,6 +791,7 @@ section {
     opacity: 1 !important;
     transform: translateY(0) translateX(0) !important;
 }
+
 
 
 
